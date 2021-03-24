@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "day1-test-app", "day1-test-app\day1-test-app.csproj", "{957C6236-530E-4185-B359-DFF8434DCCA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "string", "string\string.csproj", "{AD917206-590A-4311-9C34-AB9BF9F8B158}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "list", "list\list.csproj", "{DAB5BF7C-BA3C-4EE8-899E-C96B84E66319}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{957C6236-530E-4185-B359-DFF8434DCCA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{957C6236-530E-4185-B359-DFF8434DCCA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{957C6236-530E-4185-B359-DFF8434DCCA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{957C6236-530E-4185-B359-DFF8434DCCA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD917206-590A-4311-9C34-AB9BF9F8B158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD917206-590A-4311-9C34-AB9BF9F8B158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD917206-590A-4311-9C34-AB9BF9F8B158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD917206-590A-4311-9C34-AB9BF9F8B158}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAB5BF7C-BA3C-4EE8-899E-C96B84E66319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAB5BF7C-BA3C-4EE8-899E-C96B84E66319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAB5BF7C-BA3C-4EE8-899E-C96B84E66319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAB5BF7C-BA3C-4EE8-899E-C96B84E66319}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89D9CCDC-0CAE-4D20-B666-1528FB8DA702}
+	EndGlobalSection
+EndGlobal
