@@ -193,7 +193,7 @@ namespace VolatilePulse.Collection
                 {
                     found++;
                     _count--;
-                    // _items[i] = default;
+                    _items[i] = default;
                     continue;
                 }
 
@@ -225,11 +225,24 @@ namespace VolatilePulse.Collection
         }
 
         /// <summary>
+        /// Returns a string that represents the current object.
+        /// </summary>
+        public override string ToString()
+        {
+
+            var joinedString = string.Join(", ", _items.Take(Math.Min(10, _count)));
+            var output = $"{{ {joinedString} }}";
+            return output;
+        }
+
+        /// <summary>
         /// Copies the elements of the List<T> to a new array.
         /// </summary>
         public T[] ToArray()
         {
-            return _items.ToArray();
+            var newArray = new T[_count];
+            Array.Copy(_items, newArray, _count);
+            return newArray;
         }
 
         /// <summary>
@@ -241,6 +254,20 @@ namespace VolatilePulse.Collection
             {
                 Capacity = _count;
             }
+        }
+
+        /// <summary>
+        /// Determines whether every element in the List<T> matches the conditions defined by the specified predicate.
+        /// </summary>
+        public bool TrueForAll(Predicate<T> pred)
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                if (!pred(_items[i]))
+                    return false;
+            }
+
+            return true;
         }
     }
 }
