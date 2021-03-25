@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,7 +9,7 @@ namespace VolatilePulse.Collection
     /// <summary>
     /// Represents a strongly typed list of objects that can be accessed by index. Provides methods to search, sort, and manipulate lists.
     /// </summary>
-    public class List<T>
+    public class List<T> : ICollection<T>, IEnumerable<T>, IList<T>, IReadOnlyCollection<T>, IReadOnlyList<T>, ICollection, IEnumerable, IList
     {
         private const int CAPACITY_INCREASE_MIN = 4;
         private const int CAPACITY_INCREASE_MULTIPLIER = 2;
@@ -84,6 +85,16 @@ namespace VolatilePulse.Collection
         /// </summary>
         public int Count { get => _count; }
 
+        public bool IsReadOnly => false;
+
+        public bool IsSynchronized => throw new NotImplementedException();
+
+        public object SyncRoot => throw new NotImplementedException();
+
+        public bool IsFixedSize => throw new NotImplementedException();
+
+        object IList.this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         /// <summary>
         /// Gets or sets the element at the specified index.
         /// </summary>
@@ -141,6 +152,20 @@ namespace VolatilePulse.Collection
         }
 
         /// <summary>
+        /// Determines whether an element is in the List<T>.
+        /// </summary>
+        public bool Contains(T item)
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                if (_items[i].Equals(item))
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Determines whether the List<T> contains elements that match the conditions defined by the specified predicate.
         /// </summary>
         public bool Exists(Predicate<T> pred)
@@ -151,6 +176,35 @@ namespace VolatilePulse.Collection
                     return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Returns an enumerator that iterates through the List<T>.
+        /// </summary>
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < _count; i++)
+                yield return _items[i];
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            for (int i = 0; i < _count; i++)
+                yield return _items[i];
+        }
+
+        /// <summary>
+        /// Searches for the specified object and returns the zero-based index of the first occurrence within the entire List<T>.
+        /// </summary>
+        public int IndexOf(T item)
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                if (_items[i].Equals(item))
+                    return i;
+            }
+
+            return -1;
         }
 
         /// <summary>
@@ -212,7 +266,7 @@ namespace VolatilePulse.Collection
         /// <summary>
         /// Removes the element at the specified index of the List<T>.
         /// </summary>
-        public bool RemoveAt(int index)
+        public void RemoveAt(int index)
         {
             if (index < 0)
                 throw new ArgumentOutOfRangeException(nameof(index), index, "Index is less than 0.");
@@ -221,7 +275,6 @@ namespace VolatilePulse.Collection
 
             _count--;
             Array.Copy(_items, index + 1, _items, index, _count - index);
-            return false;
         }
 
         /// <summary>
@@ -268,6 +321,57 @@ namespace VolatilePulse.Collection
             }
 
             return true;
+        }
+
+        public void Insert(int index, T item)
+        {
+            if (Capacity == _count)
+                Capacity = CapacityIncrease();
+
+            var oldCount = _count;
+
+            for (int i = 0; i < _count; i++)
+            {
+                if (i == index)
+                {
+
+                }
+            }
+        }
+
+        public void CopyTo(T[] array, int arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(Array array, int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Add(object value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(object value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int IndexOf(object value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(int index, object value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(object value)
+        {
+            throw new NotImplementedException();
         }
     }
 }
